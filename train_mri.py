@@ -33,7 +33,7 @@ device = (
     else "mps" if torch.backends.mps.is_available()
     else "cpu"
 )
-
+print(f"Device: {device}")
 
 def run_epoch(model, criterion, optimizer, dl, train: bool):
     model.train(train)
@@ -57,8 +57,6 @@ def run_epoch(model, criterion, optimizer, dl, train: bool):
 
 
 def main():
-    print(f"Device: {device}")
-
     # ---------------------------------------------------------------- Daten laden
     root = Path(kagglehub.dataset_download("masoudnickparvar/brain-tumor-mri-dataset"))
     train_dir, test_dir = root / "Training", root / "Testing"
