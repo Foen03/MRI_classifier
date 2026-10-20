@@ -82,6 +82,7 @@ def main():
         probs = predict(model, img_path, device)
         top = int(probs.argmax())
         print(f"\n{img_path.name}  ->  {CLASSES[top]}  ({probs[top]:.1%})")
+        Image.open(img_path).show() 
         for k in probs.argsort(descending=True):
             bar = "█" * int(probs[k] * 30)
             print(f"   {CLASSES[k]:<11} {probs[k]:6.1%}  {bar}")
